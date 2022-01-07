@@ -1,8 +1,12 @@
+module.exports = function toReadable (number) {
+  return convert(number);
+}
+
 const digits = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
 const tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
 const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
 
-module.exports = function toTens(number) {
+function toTens(number) {
   if (number < 10) {
     return digits[number];
   } if (number >= 10 && number < 20) {
@@ -22,9 +26,5 @@ function convert(number) {
   if (number === 0) {
     return 'zero';
   }
-  return toHundreds(number);
-}
-
-function toReadable(number) {
-  console.log(convert(number));
+  return toHundreds(number).trim();
 }
